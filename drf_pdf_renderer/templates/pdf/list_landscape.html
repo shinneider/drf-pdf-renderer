@@ -1,0 +1,56 @@
+{% extends "pdf/base_landscape.html" %}
+{% load pdf_tags static %}
+
+{% block custom_styles %}
+#header_content {
+    text-align: center;
+    padding-top: 5pt;
+}
+#footer_content {
+    text-align: right;
+}
+
+h1 {
+    font-size: 22px
+}
+
+th {
+    color: #0c3da5;
+    background-color: #ededed;
+    height: 30px;
+    padding-top: 4px;
+}
+td {
+    text-align: center;
+    padding-top: 4px;
+    border-bottom: 1px solid #d7d7d7;
+}
+{% endblock %} 
+
+{% block header %}
+    <h1>{{title}}</h1>
+    <table style="width:100%">
+        <tr>
+            {% for field, label in fields %}
+                <th>{{label}}</th>
+            {% endfor %}
+        </tr>
+    </table>
+{% endblock %}
+
+{% block content %}
+<table style="width:100%">
+    <tr>
+        {% for field, label in fields %}
+            <th>{{label}}</th>
+        {% endfor %}
+    </tr>
+    {% for id in data %}
+    <tr>
+        {% for field, label in fields %}
+            <td>{{id|lookup:field|default_if_none:"-"}}</td>
+        {% endfor %}
+    </tr>
+    {% endfor %}
+</table>
+{% endblock %}

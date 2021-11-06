@@ -1,0 +1,50 @@
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <style>
+        {% block page_definition %}
+        @page {
+            size: a4 portrait;
+            @frame header_frame {           /* Static Frame */
+                -pdf-frame-content: header_content;
+                width: 585pt; 
+                height: 40pt;
+                top: 0pt;
+                margin: 5pt 5pt 0pt 5pt;
+            }
+            @frame content_frame {          /* Content Frame */
+                width: 585pt; 
+                top: 40pt;
+                height: 770pt;
+                margin: 0pt 5pt 0pt 5pt;
+            }
+            @frame footer_frame {           /* Another static Frame */
+                -pdf-frame-content: footer_content;
+                width: 585pt; 
+                top: 820pt; 
+                height: 20pt;
+                margin: 0pt 5pt 5pt 5pt;
+            }
+            {% block custom_page_attrs %}{% endblock %}
+        }
+        {% endblock %}
+        {% block custom_styles %}{% endblock %}
+    </style>
+</head>
+
+<body>
+    <!-- Content for Static Frame 'header_frame' -->
+    <div id="header_content">{% block header %}{% endblock %}</div>
+
+    <!-- Content for Static Frame 'footer_frame' -->
+    <div id="footer_content">
+        {% block footer %}
+            Page <pdf:pagenumber> of <pdf:pagecount>
+        {% endblock %}
+    </div>
+
+    <!-- HTML Content -->
+    {% block content %}{% endblock %}
+
+</body>
+</html>
