@@ -4,5 +4,4 @@ from django.utils.translation import ugettext_lazy as _
 
 
 class DjangoPdfRendererConfig(AppConfig):  # Our app config class
-    name = 'django_admin_search'
-    verbose_name = _('Django Admin Search')
+    verbose_name = _('Django PDF Renderer')
