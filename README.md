@@ -48,7 +48,8 @@ but i will keep an eye on the PR.
 
 # Advanced
 1. Custom PDF Template
-    - this project use [xhtml2pdf](https://github.com/xhtml2pdf/xhtml2pdf), check documentation of html constructor [here](https://xhtml2pdf.readthedocs.io/en/latest/format_html.html).
+    - this project use [xhtml2pdf](https://github.com/xhtml2pdf/xhtml2pdf), check documentation of html constructor [here](https://xhtml2pdf.readthedocs.io/en/latest/format_html.html).  
+    - Serializer data is available inside a template `{{data}}` or `{{data.my_key}}` and contains all serializer information.
     
 1. Changing PDF title
     ```
