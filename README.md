@@ -31,7 +31,7 @@ but i will keep an eye on the PR.
     class YourView(...)
         renderer_classes = (*api_settings.DEFAULT_RENDERER_CLASSES, PDFRendererPaginated)
         pdf_display_fields = (['id', 'Label for ID'], )  # used only in automatic field (caution: refactor planned in futures versions)
-        pdf_display_fields = ''  # contains two built-in templates ['pdf/list_landscape.html', 'pdf/list_portrait.html']
+        pdf_renderer_template = 'pdf/list_landscape.html'  # contains two built-in templates ['pdf/list_landscape.html', 'pdf/list_portrait.html']
         ...
     ...
 
@@ -43,8 +43,6 @@ but i will keep an eye on the PR.
     from drf_pdf_renderer.mixin import PdfAllResultsMixin
 
     class YourView(PdfAllResultsMixin, ...)
-        pdf_display_fields = (['id', 'Label for ID'], )  # used only in automatic field (caution: refactor planned in futures versions)
-        pdf_display_fields = ''  # contains two built-in templates ['pdf/list_landscape.html', 'pdf/list_portrait.html']
         ...
     ...
 
@@ -68,12 +66,12 @@ but i will keep an eye on the PR.
     ```
     # First way
     class YourView(...)
-        pdf_filename = 'My Title'
+        pdf_filename = 'my-custom-name.pdf'
     
     # Second way
     class YourView(...)
         def pdf_get_filename(self, pdf, data)
-            return ''
+            return 'my-custom-name.pdf'
     ```
 
 1. Custom data to render context
